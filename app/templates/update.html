@@ -1,0 +1,152 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="main_header">Dodaj wynik zawodnika</h1>
+
+<form action="." method="POST">
+<!--tak dziala przy dodawaniu zawodnikow <form action="." method="POST">-->
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputState">Konkurs</label><br>
+        <!--<select id="inputState" name="id_konkursu" class="form-control">
+          {% for konkurs in KalendarzPs %}
+          <option value={{konkurs.id_konkursu}}>{{konkurs.data}}, {{konkurs.id_skoczni}}</option>
+          {% endfor %}
+          
+        </select>-->
+        {{formSkoki.id_konkursu}}
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputState">Zawodnik</label><br>
+        <!--<select id="inputState" name="id_zawodnika" class="form-control">
+          {% for zawodnik in Zawodnicy %}
+            <option value={{zawodnik.id_zawodnika}}>{{zawodnik.nazwisko}} {{zawodnik.imie}}</option>
+          {% endfor %}
+        </select>-->
+        {{formSkoki.id_zawodnika}}
+      </div>      
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="inputState">Seria</label><br>
+        <!--<select id="inputState" name="typ" class="form-control">
+          <option>1</option>
+          <option>2</option>
+        </select>-->
+        {{formSkoki.typ}}
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">Uzyskana odległość [m]</label><br>
+        <!--<input type="text" name="odleglosc" class="form-control" placeholder="0">-->
+        {{formSkoki.odleglosc}}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputState">Sędziowie</label>
+        <!--<select id="inputState" name="id_sedziego" class="form-control">
+          {% for sedzia in Sedziowie %}
+            <option value={{sedzia.id_sedziego}}>{{sedzia.nazwisko}} {{sedzia.imie}}</option>
+          {% endfor %}
+        </select>-->
+      {{formOceny1.id_sedziego}}
+      </div>       
+      <div class="form-group col-md-2">
+        <label for="inputState">Oceny</label>
+        <!--<select id="inputState" name="ocena" class="form-control">
+          <option>20</option><option>19.5</option><option>19</option><option>18.5</option><option>18</option>
+          <option>17.5</option><option>17</option><option>16.5</option><option>16</option><option>15.5</option>
+        </select>-->
+        {{formOceny1.ocena}}
+      </div>      
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputState">Sędziowie</label>
+        <!--<select id="inputState" name="id_sedziego" class="form-control">
+          {% for sedzia in Sedziowie %}
+            <option value={{sedzia.id_sedziego}}>{{sedzia.nazwisko}} {{sedzia.imie}}</option>
+          {% endfor %}
+        </select>-->
+      {{formOceny2.id_sedziego}}
+      </div>       
+      <div class="form-group col-md-2">
+        <label for="inputState">Oceny</label>
+        <!--<select id="inputState" name="ocena" class="form-control">
+          <option>20</option><option>19.5</option><option>19</option><option>18.5</option><option>18</option>
+          <option>17.5</option><option>17</option><option>16.5</option><option>16</option><option>15.5</option>
+        </select>-->
+        {{formOceny2.ocena}}
+      </div>      
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputState">Sędziowie</label>
+        <!--<select id="inputState" name="id_sedziego" class="form-control">
+          {% for sedzia in Sedziowie %}
+            <option value={{sedzia.id_sedziego}}>{{sedzia.nazwisko}} {{sedzia.imie}}</option>
+          {% endfor %}
+        </select>-->
+      {{formOceny3.id_sedziego}}
+      </div>       
+      <div class="form-group col-md-2">
+        <label for="inputState">Oceny</label>
+        <!--<select id="inputState" name="ocena" class="form-control">
+          <option>20</option><option>19.5</option><option>19</option><option>18.5</option><option>18</option>
+          <option>17.5</option><option>17</option><option>16.5</option><option>16</option><option>15.5</option>
+        </select>-->
+        {{formOceny3.ocena}}
+      </div>      
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputState">Sędziowie</label>
+        <!--<select id="inputState" name="id_sedziego" class="form-control">
+          {% for sedzia in Sedziowie %}
+            <option value={{sedzia.id_sedziego}}>{{sedzia.nazwisko}} {{sedzia.imie}}</option>
+          {% endfor %}
+        </select>-->
+      {{formOceny4.id_sedziego}}
+      </div>       
+      <div class="form-group col-md-2">
+        <label for="inputState">Oceny</label>
+        <!--<select id="inputState" name="ocena" class="form-control">
+          <option>20</option><option>19.5</option><option>19</option><option>18.5</option><option>18</option>
+          <option>17.5</option><option>17</option><option>16.5</option><option>16</option><option>15.5</option>
+        </select>-->
+        {{formOceny4.ocena}}
+      </div>      
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputState">Sędziowie</label>
+        <!--<select id="inputState" name="id_sedziego" class="form-control">
+          {% for sedzia in Sedziowie %}
+            <option value={{sedzia.id_sedziego}}>{{sedzia.nazwisko}} {{sedzia.imie}}</option>
+          {% endfor %}
+        </select>-->
+      {{formOceny5.id_sedziego}}
+      </div>       
+      <div class="form-group col-md-2">
+        <label for="inputState">Oceny</label>
+        <!--<select id="inputState" name="ocena" class="form-control">
+          <option>20</option><option>19.5</option><option>19</option><option>18.5</option><option>18</option>
+          <option>17.5</option><option>17</option><option>16.5</option><option>16</option><option>15.5</option>
+        </select>-->
+        {{formOceny5.ocena}}
+      </div>      
+    </div>
+    
+    <button type="submit" class="btn btn-primary" value="Post">Dodaj skok</button>
+  </form>
+
+  {% endblock %}

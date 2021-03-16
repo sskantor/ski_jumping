@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="main_header">Statystyki</h1>
+
+<!--  -->
+
+<div class="container">
+<h4>Wybierz konkurs, dla którego chcesz zobaczyć wyniki</h4>
+
+<form action="." method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputState">Konkurs</label><br>
+        {{formSkoki.id_konkursu}}
+      </div>
+    </div>
+<button type="submit" class="btn btn-primary" value="Post">Wybierz</button>
+</form>
+
+</div>
+
+<canvas id="positions_per_comp_chart" data-url="{% url 'positions_per_comp_chart' %}" width="1000" height="400"></canvas>
+<script>
+    
+    $(function () {
+        var $positionsChart = $("#positions_per_comp_chart");
+        $.ajax({
+            url: $positionsChart.data("url"),
+            success: function (data) {
+                var ctx = $positionsChart[0].getContext("2d");
+                var positions_chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Ilość punktów',
+                            data: data.data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(179, 165, 161, 0.2)',
+                                'rgba(133, 142, 230, 0.2)',
+                                'rgba(180, 210, 152, 0.2)',
+                                'rgba(218, 173, 215, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(179, 165, 161, 1)',
+                                'rgba(133, 142, 230, 1)',
+                                'rgba(180, 210, 152, 1)',
+                                'rgba(218, 173, 215, 1)',
+
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Wyniki konkursu'
+                        },
+                        scales: {
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Ilość punktów'
+                                },
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Zawodnik'
+                                },
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]    
+                        }
+                    }
+                });  
+            }
+        });
+    });
+
+</script>
+
+{% endblock %}

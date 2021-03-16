@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1 class="main_header">Przeglądaj skocznie</h1>
+
+<div class="row">
+  {% for skocznia in Skocznie %}
+  
+  <div class="col-md-6 col-lg-4">
+    <div class="card" style="width: 18rem; margin-bottom: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">{{skocznia.nazwa}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{skocznia.id_skoczni}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{skocznia.kraj}}, {{skocznia.miasto}}</h6>
+
+        <!-- <p class="card-text">Pasowałby jakiś opis, albo foteczka, ale to by trzeba było do tabeli dodać czy coś xD</p> -->
+
+        <h6 class="card-subtitle mb-2 text-muted">Punkt konstrukcyjny: {{skocznia.punkt_k}} m</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Rozmiar skoczni: {{skocznia.punkt_hs}} m</h6>
+      </div>
+    </div>
+  </div>
+  
+  {% endfor %}
+
+</div>
+
+
+
+{% endblock %}

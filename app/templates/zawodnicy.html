@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="main_header">Zawodnicy</h1>
+
+<div class="row">
+    {% for zawodnik in Zawodnicy %}
+    
+    <div class="col-md-6 col-lg-4">
+      <div class="card" style="width: 18rem; margin-bottom: 10px;">
+        <div class="card-body">
+          <h5 class="card-title">{{zawodnik.imie}} {{zawodnik.nazwisko}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Narodowość: {{zawodnik.narodowosc}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Data urodzenia: {{zawodnik.data_urodzenia}}</h6>
+          <a href="{% url 'delete_zawodnik' id=zawodnik.id_zawodnika %}">
+            <button type="button" class="btn btn-danger btn-sm">Usuń</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    {% endfor %}
+  
+  </div>
+
+  <div class="row">
+    <div class="card-body">
+      <a href="/zawodnicy_add">
+        <button type="button" class="btn btn-secondary">Dodaj nowego zawodnika</button>
+      </a>
+    </div>
+  </div>
+
+
+{% endblock %}

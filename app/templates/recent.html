@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="main_header">Ostatnie skoki</h1>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Data</th>
+        <th scope="col">Zawodnik</th>
+        <th scope="col">Konkurs</th>
+        <th scope="col">Typ</th>
+        <th scope="col">Odległość</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for skok in skoki %}
+
+      <tr>
+        <th scope="row">{{ skok.0 }}</th>
+        <td>{{ skok.3 }}</td>
+        <td>{{ skok.2 }} {{ skok.1 }}</td>
+        <td>{{ skok.4 }}, {{ skok.5 }}</td>
+        <td>{{ skok.6 }}</td>
+        <td>{{ skok.7 }}</td>
+        
+        <td>
+          <a href="{% url 'edit_skok' id=skok.0 %}">     
+            <button type="button" class="btn btn-info">Edytuj</button>
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'delete_skok' id=skok.0 %}">  
+            <button type="button" class="btn btn-danger">Usuń</button>
+          </a>
+        </td>
+      </tr>
+
+      {% endfor %}
+
+    </tbody>
+  </table>  
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="main_header">Konkursy PŚ</h1>
+
+
+<div class="row">
+  {% for konkurs in KalendarzPs %}
+
+  <div class="col-md-6 col-lg-4">
+    <div class="card" style="width: 18rem; margin-bottom: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">{{konkurs.data}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{konkurs.id_skoczni}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{konkurs.id_skoczni.nazwa}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{konkurs.typ_konkursu}}</h6>
+
+        <!-- <p class="card-text">Pasowałby jakiś opis,  ale to by znowu trzeba było do tabeli dodać czy coś xD</p> -->
+        <!-- tu bym dodała normalnie nazwę skoczni czy coś, ale boje sie tego pytonga ruszać żeby tutaj dodac pobieranie też z tej drugiej bazy xd -->
+
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+  </div>
+
+{% endblock %}
